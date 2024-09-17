@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,5 +31,14 @@ public class Media {
     private Integer duree;
     @Column(name = "reservable")
     private Integer reservable;
+    @ManyToOne
+    @JoinColumn(name = "idTypeMedia", referencedColumnName = "idTypeMedia")
+    private TypeMedia typeMedia;
+    @ManyToOne
+    @JoinColumn(name = "code_ISO_639_1", referencedColumnName = "code_ISO_639_1")
+    private Langue langue;
 
+    public Media() {
+
+    }
 }
